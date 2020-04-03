@@ -112,12 +112,12 @@ function updateGem(req, res){
     })
 }
 
-function updateGemWithImages(id_, img){
+function updateGemWithImages(_id, img){
     let conceptID = _id
     let update = img
 
     GemsSub.findByIdAndUpdate(conceptID, {"$push": {"images": update}},
-    {"new": true, "upsert": true },
+    {"new": false, "upsert": false },
     (err, conceptUpdated)=>{
         if(err) res.status(500).send({message: `Error in the request ${err}`})
         console.log ("Gem Updated", conceptUpdated)
@@ -134,6 +134,7 @@ function deleteGem(req, res){
 
 function uploadPhotos(req, res){
     const path = req.files.file.path
+    const gemID = req.body._id
     console.log(path)
     const uniqueFilename = Random.id()
     fs.readFile(path, function(err, data){
@@ -143,11 +144,16 @@ function uploadPhotos(req, res){
         `gemsImages`},
             (err, result)=>{
                 console.log(result)
-              /*  if(err) return res.status(500).send(err)
+                
+                let routeIng = result.url
+                let arrayRoute = routeIng.split("/")
+                let finalUrl = arrayRoute[6] + "/" + arrayRoute[7] + "/" + arrayRoute[8]
+                console.log("finalUrl", finalUrl)
+
+                if(err) return res.status(500).send(err)
                 fs.unlinkSync(path)
-                updateGemWithImages()
-                res.status(200).send({message: "upload image success",
-                imageData: result}) */
+                updateGemWithImages(gemID, finalUrl)
+                console.log ("This works")
             })
         })
     }
