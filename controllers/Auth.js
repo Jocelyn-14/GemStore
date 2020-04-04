@@ -4,7 +4,9 @@ module.exports = {
     getCurrentUser,
     signInUser
 }
-
+/*Aquí agregamos la funciones para el manejo de usuarios, desde
+crear un usuario a poder ingresar con él y que nos otorgue un token, 
+con el cual, pueda reconocer al usuario y realizar ciertas operaciones. */
 const User = require('../models/User')
 
 const jwt = require('jsonwebtoken')

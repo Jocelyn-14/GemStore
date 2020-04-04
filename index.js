@@ -14,3 +14,17 @@ mongoose.connect(local, (err, res)=>{
         console.log(`API Rest running at http://localhost:${port}`)
     })
 })
+
+/*index.js es de los más importantes ya que es el que corre 
+nuestro API, aquí definimos el puerto por el que pasará la 
+información así como llegar a establecer la conexión con 
+nuestra base de datos, como podemos ver en la parte superior 
+agregamos una URL que contiene nuestro usuario y contraseña 
+para Mongo, ya que tenemos establecida nuestra base de datos
+ahí.*/
+
+/*Ya que no me deja comentar en la parte del package.json lo 
+comentaré aquí, este nos permite ver todas las librerías y las
+versiones que tenemos instaladas para nuestra API, también,
+definimos "start" para que al ejecutar tal comando este nos permita
+correr el API y lo podamos seguir editando al mismo tiempo. */

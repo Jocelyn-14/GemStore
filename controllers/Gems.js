@@ -8,7 +8,9 @@ module.exports = {
     uploadPhotos,
     updateGemWithImages
 }
-
+/*Aqui declaramos cada function para que pueda mandarla llamar
+el código al momento de ejecutarse y más abajo declaramos lo que 
+hace cada una de ellas. */
 const GemsSub = require('../models/Gems')
 const mongoose = require('mongoose')
 const meteorID = require('meteor-mongo-id')
@@ -30,6 +32,9 @@ function getGems(req, res){
         res.status(200).send({gems: concepts})
     })
 }
+/*Aquí declaramos las diferentes funciones que llevaran a cabo el
+manejo de información, podemos crear, obtener, actualizar, eliminar, etc.
+en la base de datos por medio de estas funciones */
 
 function getGemsPagination(req, res){
     let perPage = parseInt(req.body.perPage)
@@ -131,6 +136,9 @@ function deleteGem(req, res){
         res.status(200).send({message: `Remove Completed`})
     })
 }
+/*Aquí tenemos una función para agregar imágenes a nuestra base de datos
+como estamos enfocándonos en una tienda para gemas esto nos permite
+subir imagenes según cada tipo de gema disponible. */
 
 function uploadPhotos(req, res){
     const path = req.files.file.path
@@ -158,7 +166,10 @@ function uploadPhotos(req, res){
         })
     }
     
-
+/*En esta función declaramos el formato de fecha que se tomará en cuenta 
+para que el programa nos regrese el formato que le indiquemos
+tuvimos que agregarle un valor a los meses ya que de esta forma empezamos
+del mes 1 al 12 y no del 0 al 11. */
 
 function formatDateName(now){
     let year = now.getFullYear()

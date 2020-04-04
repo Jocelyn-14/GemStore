@@ -16,3 +16,8 @@ router.use(multipart({
 router.post('/uploadphoto', GemsController.uploadPhotos)
 
 module.exports = router
+ /*En este caso también nos permite acceder a archivos y carpetas con 
+ las funciones correspondientes al manejo de gemas, como podemos ver 
+ también está el verifytoken en la parte superior ya que para acceder 
+ a estas funciones se puede solicitar el token del usuario en cuestión
+ pero al no requerirlo para este API no es muy necesario.*/
